@@ -1,5 +1,5 @@
 .nav-bg{
-    background-color: #00008B;
+    background-color: #FFA500;
 }
 
 .main-menu{
@@ -45,11 +45,11 @@
 
 .sub-menu{
     position: absolute;
-    background-color: #00008B;
+    background-color: #FFA500;
     list-style: none;
     width: 200px;
     z-index: 99;
-    border: 1px solid rgb(97, 97, 97);
+    border: 1px solid #FFA500;
     display: none;
 }
 

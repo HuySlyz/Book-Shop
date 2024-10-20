@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-md bg-white navbar-light">
             <div class="container">
                 <!-- logo  -->
-                <a class="navbar-brand" href="home" style="color: rgb(0, 0, 187);"><b>Watch Shop</b></a>
+                <a class="navbar-brand" href="home" style="color: #FFA500;"><b>Book Shop</b></a>
 
                 <!-- navbar-toggler  -->
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
@@ -29,9 +29,9 @@
                     <!-- form tìm kiếm  -->
                     <form action="search" class="form-inline ml-auto my-2 my-lg-0 mr-3">
                         <div class="input-group" style="width: 500px;">
-                            <input type="text" class="form-control" aria-label="Small" value="${key != null ? key : ''}" name="key" placeholder="Nhập tên sản phẩm cần tìm kiếm...">
+                            <input type="text" class="form-control" style="border-bottom-color: orange"  aria-label="Small" value="${key != null ? key : ''}" name="key" placeholder="Nhập tên sản phẩm cần tìm kiếm...">
                             <div class="input-group-append">
-                                <button type="submit" class="btn" style="background-color: rgb(0, 0, 196); color: white;">
+                                <button type="submit" class="btn" style="background-color: #FFA500; color: white;">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
