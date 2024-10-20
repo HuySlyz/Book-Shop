@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <section class="abovefooter text-white" style="background-color: blue;">
+        <section class="abovefooter text-white" style="background-color: orange;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
@@ -20,7 +20,7 @@
                             <img src="img/icon-books.png" alt="icon-books">
                             <div class="noidung">
                                 <h3 class="tieude font-weight-bold">NHIỀU SẢN PHẨM HẤP DẪN</h3>
-                                <p class="detail">Tuyển chọn bởi WDONGHO</p>
+                                <p class="detail">Tuyển chọn bởi BOOKSHOP</p>
                             </div>
                         </div>
                     </div>
@@ -38,8 +38,8 @@
                             <img src="img/icon-gift.png" alt="icon-gift">
                             <div class="noidung">
                                 <h3 class="tieude font-weight-bold">QUÀ TẶNG MIỄN PHÍ</h3>
-                                <p class="detail">Thay pin miễn phí</p>
-                                <p class="detail">Móc khóa logo</p>
+                                <p class="detail">Sticker liên quan miễn phí</p>
+                                <p class="detail">Hình dán miễn phí</p>
                             </div>
                         </div>
                     </div>
@@ -62,8 +62,8 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-6">
                         <div class="gioithieu">
-                            <h3 class="header text-uppercase font-weight-bold">Về WATCH SHOP</h3>
-                            <a href="#">Giới thiệu về WATCH SHOP</a>
+                            <h3 class="header text-uppercase font-weight-bold">Về BOOK SHOP</h3>
+                            <a href="#">Giới thiệu về BOOK SHOP</a>
                             <a href="#">Tuyển dụng</a>
                         </div>
                     </div>
