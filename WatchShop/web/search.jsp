@@ -40,7 +40,7 @@
                 <div class="col-sm-3" style="margin-top: 24px;border-right: 1px solid black">
                     <form action="search" style="margin-top: 20px;"> 
                         <div>
-                            <h5>Thương hiệu:</h5>
+                            <h5>Thể Loại</h5>
                             <c:forEach items="${requestScope.listB}" var="b">
                                 <c:set var="isChecked" value="false" />
                                 <c:if test="${not empty requestScope.bid}">
@@ -54,7 +54,7 @@
                             </c:forEach>
                         </div><br><hr>
                         <div>
-                            <h5>Giới tính</h5> 
+                            <h5>Tác Giả</h5> 
                             <c:forEach items="${requestScope.listC}" var="c">
                                 <c:if test="${c.type==1}">
                                     <c:set var="isChecked" value="false" />
@@ -66,38 +66,6 @@
                                         </c:forEach>
                                     </c:if>
                                     <input ${isChecked ? 'checked' : ''} type="checkbox" value="${c.cid}" name="cid1" onchange="this.form.submit()"/> ${c.type==2?'Chống nước: ':''}${c.type==3?'Độ rộng dây đeo: ':''} ${c.cname}<br>
-                                </c:if>
-                            </c:forEach>
-                        </div><br><hr>
-                        <div>
-                            <h5>Mức độ chống nước</h5> 
-                            <c:forEach items="${requestScope.listC}" var="c">
-                                <c:if test="${c.type==2}">
-                                    <c:set var="isChecked" value="false" />
-                                    <c:if test="${requestScope.cid2!=null}">
-                                        <c:forEach var="selectedCid" items="${requestScope.cid2}">
-                                            <c:if test="${c.cid == selectedCid}">
-                                                <c:set var="isChecked" value="true" />
-                                            </c:if>
-                                        </c:forEach>
-                                    </c:if>
-                                    <input ${isChecked ? 'checked' : ''} type="checkbox" value="${c.cid}" name="cid2" onchange="this.form.submit()"/> ${c.type==2?'Chống nước: ':''}${c.type==3?'Độ rộng dây đeo: ':''} ${c.cname}<br>
-                                </c:if>
-                            </c:forEach>
-                        </div><br><hr>
-                        <div>
-                            <h5>Đường kính mặt số</h5> 
-                            <c:forEach items="${requestScope.listC}" var="c">
-                                <c:if test="${c.type==3}">
-                                    <c:set var="isChecked" value="false" />
-                                    <c:if test="${requestScope.cid3!=null}">
-                                        <c:forEach var="selectedCid" items="${requestScope.cid3}">
-                                            <c:if test="${c.cid == selectedCid}">
-                                                <c:set var="isChecked" value="true" />
-                                            </c:if>
-                                        </c:forEach>
-                                    </c:if>
-                                    <input ${isChecked ? 'checked' : ''} type="checkbox" value="${c.cid}" name="cid3" onchange="this.form.submit()"/> ${c.type==2?'Chống nước: ':''}${c.type==3?'Độ rộng dây đeo: ':''} ${c.cname}<br>
                                 </c:if>
                             </c:forEach>
                         </div><br><hr>

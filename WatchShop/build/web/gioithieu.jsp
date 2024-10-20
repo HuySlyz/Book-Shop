@@ -18,7 +18,7 @@
     <body>
         <jsp:include page="nav.jsp"/><br>
         <div class="container">
-            <img src="img/banner3.png" alt="alt" style="width: 100%"/><br><br>
+            <img src="img/bookshop.jpg" alt="alt" style="width: 100%"/><br><br>
             <h1 style="margin-left: 380px;color: orange">
                 Thành lập năm 2024
             </h1>
@@ -26,10 +26,10 @@
                 Cam kết 100% chính hãng
             </h1><br>
             <div style="margin: 0 200px">
-                <span>Trải qua nhiều năm thành lập, với những nỗ lực không ngừng, Watch Shop đã gặt hái nhiều thành công trong hoạt động kinh doanh và chiếm lĩnh trên thị trường. Watch Shop đã đăng ký hoạt động thương mại điện tử với Bộ Công Thương. Chúng tôi cam kết 100% sản phẩm chính hãng.</span>
+                <span>Trải qua nhiều năm thành lập, với những nỗ lực không ngừng, Book Shop đã gặt hái nhiều thành công trong hoạt động kinh doanh và chiếm lĩnh trên thị trường. Book Shop đã đăng ký hoạt động thương mại điện tử với Bộ Công Thương. Chúng tôi cam kết 100% sản phẩm chính hãng.</span>
             </div>
             <h1 style="margin-left:455px;color: orange">
-                Watch Shop
+                Book Shop
             </h1>
             <img src="img/gt.png" style="width: 100%">
         </div>        
