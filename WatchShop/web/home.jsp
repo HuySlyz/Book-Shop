@@ -7,6 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Watch Shop</title>
         <!-- Font Awesome & Google Fonts -->
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <!-- Bootstrap -->
@@ -87,10 +88,10 @@
         <!-- Sản phẩm mới -->
         <section class="new-products _1khoi bg-white mt-2">
             <div class="container">
-                <div class="noidung" style=" width: 100%;">
+                <div class="noidung bg-white" style=" width: 100%;">
                     <div class="row">
-                        <div class="col-12 d-flex justify-content-between align-items-center pb-2">
-                            <h2 class="header text-uppercase" style="font-weight: 400;">Sản phẩm mới</h2>
+                        <div class="col-12 ">
+                            <h2 class="header text-uppercase" style="font-size: 30px;font-weight: 900;text-align: center; color: orange;">Sản phẩm mới</h2>
                         </div>
                     </div>
                     <div class="row khoisanpham">
@@ -124,8 +125,8 @@
             <div class="container">
                 <div class="noidung bg-white" style=" width: 100%;">
                     <div class="row">
-                        <div class="col-12 d-flex justify-content-between align-items-center pb-2 bg-light">
-                            <h2 class="header text-uppercase" style="font-weight: 400;">Sản phẩm bán chạy</h2>
+                        <div class="col-12 ">
+                            <h2 class="header text-uppercase" style="font-size: 30px;font-weight: 900;text-align: center; color: orange;">Sản phẩm bán chạy</h2>
                         </div>
                     </div>
                     <div class="row khoisanpham">
@@ -159,8 +160,8 @@
             <div class="container">
                 <div class="noidung bg-white" style=" width: 100%;">
                     <div class="row">
-                        <div class="col-12 d-flex justify-content-between align-items-center pb-2 bg-light">
-                            <h2 class="header text-uppercase" style="font-weight: 400;">Sản phẩm Giá tốt</h2>
+                        <div class="col-12">
+                            <h2 class="header text-uppercase" style="font-size: 30px;font-weight: 900;text-align: center; color: orange;">Sản phẩm Giá tốt</h2>
                         </div>
                     </div>
                     <div class="row khoisanpham">
@@ -195,7 +196,7 @@
    <div class="container" style="margin-bottom: 30px;">
     <div class="col-inner">
         <div id="text-3185983446" class="text">
-            <h2 class="uppercase" style="font-size: 0.75rem; text-align: center; margin-bottom: 20px;">Tác Giả Nổi Tiếng</h2>
+            <h2 class="uppercase" style="font-size: 40; text-align: center; margin-bottom: 20px;">Tác Giả Nổi Tiếng</h2>
 
             <div class="row" style="display: flex; justify-content: center; gap: 20px;">
                 <a href="search?bid=1" class="col-md-2" 

@@ -72,7 +72,7 @@
                                             <div style="margin: 15px 0;font-size: 16px">Đã bán: <b>${detail.sold}</b> sản phẩm</div>
                                         </div>
                                         <div class="uudai my-3">
-                                            <h6 class="header font-weight-bold">Khuyến mãi & Ưu đãi tại Watch Shop</h6>
+                                            <h6 class="header font-weight-bold">Khuyến mãi & Ưu đãi tại Book Shop</h6>
                                             <ul>
                                                 <li><b>Miễn phí giao hàng </b>cho mọi đơn hàng</li>
                                                 <li><b>Đổi trả hàng nhanh chóng khi gặp lỗi </b></li>
@@ -97,7 +97,6 @@
                                         </label>
 
                                         <a href="#" onclick="addCart('${detail.id}')" class="btn btn-primary" style="width:200px;color: white" >Chọn mua</a>
-                                        <P>Gọi đặt mua: 0962900476 (8:00-21:30)</P>
                                     </div>
                                 </div>
                             </form>
@@ -122,7 +121,7 @@
                                 <p style="margin: 15px 0"><span style="font-weight: bold">Chức năng:</span>  Lịch ngày – Lịch thứ</p> 
 
                                 <p style="margin: 15px 0">Bảo hành quốc tế: 1 năm</p> 
-                                <p style="margin: 15px 0">Bảo hành tại Watch Shop: 5 năm</p> 
+                                <p style="margin: 15px 0">Bảo hành tại Book Shop: 5 năm</p> 
                             </div>
                             <div class="col-md-7">
                                 <h4 style="margin-left: 15px;font-weight: bold"><i class="fa fa-file-text-o" style="font-size:24px;"></i> Mô tả sản phẩm</h4>
