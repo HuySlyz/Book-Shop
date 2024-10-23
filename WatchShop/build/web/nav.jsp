@@ -39,7 +39,7 @@
                         </div>
                     </form>
 
-                    <ul class="navbar-nav mb-0 ml-auto" style="width: 1000px">
+                    <ul class="navbar-nav mb-0 ml-5" style="width: "auto">
                         <div class="dropdown row" style="margin-left: 10px">
 
                             <c:if test="${sessionScope.account == null}" >

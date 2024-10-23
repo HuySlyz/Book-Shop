@@ -21,14 +21,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     </head>
-    <body style="background-image: url('img/watchlogin1.jpg')">
+    <body style="background-image: url('img/loginbg.jpg') ; background-size: cover; 
+             background-position: center; 
+             background-repeat: no-repeat;
+             height: 100vh;
+             margin: 0;" >
         <div class="container">
             <div class="img">
             </div>
             <div class="login-container" >
                 <form action="login" method="post">
                     <h2>Đăng Nhập</h2>
-                    <p>Chào Mừng Trở Lại !</p>
                     <h3 style="color: red" ">${requestScope.error}</h3>
                     <div class="input-div one">
                         <div class="i">

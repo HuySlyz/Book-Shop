@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Watch Shop</title>
+        <title>Book Shop</title>
         <!-- Boxicons -->
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
         <!-- My CSS -->
@@ -35,7 +35,7 @@
     <body>
         <section id="sidebar">
             <a href="AdminManage.jsp" class="brand" style="margin-left: 60px;">
-                <span class="text">Watch Shop</span>
+                <span class="text">Book Shop</span>
             </a>
             <ul class="side-menu top">
                 <div class="user-info" style="margin-left: 10px;" >

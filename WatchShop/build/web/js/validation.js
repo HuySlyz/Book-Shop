@@ -1,3 +1,82 @@
+// Kiểm tra tên đăng nhập có tồn tại
+function checkUserExist() {
+    var username = document.getElementById("username").value;
+    var usernameMessage = document.getElementById("usernameMessage");
+
+    if (username.trim() === "") {
+        usernameMessage.textContent = "Tên đăng nhập không được để trống.";
+        usernameMessage.style.color = "red";
+        return;
+    }
+
+    fetch(`checkUserEmail?type=user&value=${encodeURIComponent(username)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                usernameMessage.textContent = "Tên đăng nhập đã tồn tại.";
+                usernameMessage.style.color = "red";
+            } else {
+                usernameMessage.textContent = "";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// Kiểm tra email có tồn tại
+function checkEmailExist() {
+    var email = document.getElementById("email").value;
+    var emailMessage = document.getElementById("emailMessage");
+
+    if (email.trim() === "") {
+        emailMessage.textContent = "Email không được để trống.";
+        emailMessage.style.color = "red";
+        return;
+    }
+
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        emailMessage.textContent = "Email không hợp lệ.";
+        emailMessage.style.color = "red";
+        return;
+    }
+
+    fetch(`checkUserEmail?type=email&value=${encodeURIComponent(email)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.exists) {
+                emailMessage.textContent = "Email đã tồn tại.";
+                emailMessage.style.color = "red";
+            } else {
+                emailMessage.textContent = "";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// Kiểm tra khoảng trắng
+function checkWhitespace() {
+    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    var password = document.getElementById("password").value;
+    var repeatPassword = document.getElementById("re_pass").value;
+    var address = document.getElementById("address").value;
+
+    var whitespaceMessageElement = document.getElementById("whitespaceMessage");
+
+    if (/\s/.test(username) || /\s/.test(email) || /\s/.test(phoneNumber) || /\s/.test(password) || /\s/.test(repeatPassword) || /\s/.test(address)) {
+        whitespaceMessageElement.innerHTML = "Các trường không thể chứa dấu cách.";
+        whitespaceMessageElement.style.color = "red";
+    } else {
+        whitespaceMessageElement.innerHTML = "";
+    }
+}
+
+// Kiểm tra tính hợp lệ của email
 function validateEmail() {
     var email = document.getElementById("email").value;
     var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$/;
@@ -6,27 +85,31 @@ function validateEmail() {
     if (emailRegex.test(email)) {
         emailMessageElement.innerHTML = "Email hợp lệ.";
         emailMessageElement.style.color = "green";
-        checkEmailExist();  // Kiểm tra email tồn tại
+        checkEmailExist();
     } else {
         emailMessageElement.innerHTML = "Email không đúng định dạng.";
         emailMessageElement.style.color = "red";
     }
 }
 
-function validateEmails() {
-    var email = document.getElementById("newEmail").value;
-    var emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$/;
-    var emailMessageElement = document.getElementById("emailMessage");
+// Kiểm tra tên đăng nhập không chứa khoảng trắng
+function validateUsername() {
+    var username = document.getElementById("username").value;
+    var usernameMessageElement = document.getElementById("usernameMessage");
 
-    if (emailRegex.test(email)) {
-        emailMessageElement.innerHTML = "Email hợp lệ.";
-        emailMessageElement.style.color = "green";
+    if (username.trim() === "") {
+        usernameMessageElement.innerHTML = "Tên đăng nhập không được để trống.";
+        usernameMessageElement.style.color = "red";
+    } else if (/\s/.test(username)) {
+        usernameMessageElement.innerHTML = "Tên đăng nhập không được chứa khoảng trắng.";
+        usernameMessageElement.style.color = "red";
     } else {
-        emailMessageElement.innerHTML = "Email không đúng định dạng.";
-        emailMessageElement.style.color = "red";
+        usernameMessageElement.innerHTML = "";
+        checkUserExist();
     }
 }
 
+// Kiểm tra số điện thoại
 function validatePhoneNumber() {
     var phoneNumber = document.getElementById("phoneNumber").value;
     var phoneRegex = /^[0-9]{10,11}$/; // Giả sử số điện thoại Việt Nam có 10 hoặc 11 chữ số
@@ -41,22 +124,7 @@ function validatePhoneNumber() {
     }
 }
 
-function validateUsername() {
-    var username = document.getElementById("username").value;
-    var usernameMessageElement = document.getElementById("usernameMessage");
-
-    if (username.trim() === "") {
-        usernameMessageElement.innerHTML = "Tên đăng nhập không được để trống.";
-        usernameMessageElement.style.color = "red";
-    } else if (/\s/.test(username)) {
-        usernameMessageElement.innerHTML = "Tên đăng nhập không được chứa khoảng trắng.";
-        usernameMessageElement.style.color = "red";
-    } else {
-        usernameMessageElement.innerHTML = "";
-        checkUserExist();  // Kiểm tra tên đăng nhập tồn tại
-    }
-}
-
+// Kiểm tra mật khẩu
 function validatePassword() {
     var password = document.getElementById("password").value;
     var passwordMessageElement = document.getElementById("passwordMessage");
@@ -81,6 +149,7 @@ function validatePassword() {
     }
 }
 
+// Kiểm tra mật khẩu xác nhận
 function validateRepeatPassword() {
     var password = document.getElementById("password").value;
     var repeatPassword = document.getElementById("re_pass").value;
@@ -94,6 +163,7 @@ function validateRepeatPassword() {
     }
 }
 
+// Kiểm tra địa chỉ (tùy chọn có thể để trống)
 function validateAddress() {
     var address = document.getElementById("address").value;
     var addressMessageElement = document.getElementById("addressMessage");
@@ -106,48 +176,7 @@ function validateAddress() {
     }
 }
 
-function validateAddressStaff() {
-    var address = document.getElementById("newaddress").value;
-    var addressMessageElement = document.getElementById("naddressMessage");
-
-    if (address.trim() === "") {
-        addressMessageElement.innerHTML = "Phải nhập địa chỉ.";
-        addressMessageElement.style.color = "red";
-    } else {
-        addressMessageElement.innerHTML = "";
-    }
-}
-
-function checkWhitespace() {
-    var username = document.getElementById("username").value;
-    var email = document.getElementById("email").value;
-    var phoneNumber = document.getElementById("phoneNumber").value;
-    var password = document.getElementById("password").value;
-    var repeatPassword = document.getElementById("re_pass").value;
-    var address = document.getElementById("address").value;
-
-    var whitespaceMessageElement = document.getElementById("whitespaceMessage");
-
-    if (/\s/.test(username) || /\s/.test(email) || /\s/.test(phoneNumber) || /\s/.test(password) || /\s/.test(repeatPassword) || /\s/.test(address)) {
-        whitespaceMessageElement.innerHTML = "Các trường không thể chứa dấu cách.";
-        whitespaceMessageElement.style.color = "red";
-    } else {
-        whitespaceMessageElement.innerHTML = "";
-    }
-}
-
-function validateFullName() {
-    var username = document.getElementById("fullname").value;
-    var usernameMessageElement = document.getElementById("fullnameMessage");
-
-    if (username.trim() === "") {
-        usernameMessageElement.innerHTML = "Tên nhận hàng không được để trống.";
-        usernameMessageElement.style.color = "red";
-    } else {
-        usernameMessageElement.innerHTML = "";
-    }
-}
-
+// Xử lý khi người dùng nhấn nút Đăng ký
 function onSubmitForm(event) {
     validateForm();
     var errorMessageElements = document.querySelectorAll('div[id$="Message"]');
@@ -158,63 +187,4 @@ function onSubmitForm(event) {
         }
     }
     return true;
-}
-
-function checkUserExist() {
-    var username = document.getElementById("username").value;
-    var usernameMessage = document.getElementById("usernameMessage");
-
-    if (username.trim() === "") {
-        usernameMessage.textContent = "Tên đăng nhập không được để trống.";
-        usernameMessage.style.color = "red";
-        return;
-    }
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "checkUserEmail?type=user&value=" + encodeURIComponent(username), true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            if (response.exists) {
-                usernameMessage.textContent = "Tên đăng nhập đã tồn tại.";
-                usernameMessage.style.color = "red";
-            } else {
-                usernameMessage.textContent = "";
-            }
-        }
-    };
-    xhr.send();
-}
-
-function checkEmailExist() {
-    var email = document.getElementById("email").value;
-    var emailMessage = document.getElementById("emailMessage");
-
-    if (email.trim() === "") {
-        emailMessage.textContent = "Email không được để trống.";
-        emailMessage.style.color = "red";
-        return;
-    }
-
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        emailMessage.textContent = "Email không hợp lệ.";
-        emailMessage.style.color = "red";
-        return;
-    }
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "checkUserEmail?type=email&value=" + encodeURIComponent(email), true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            if (response.exists) {
-                emailMessage.textContent = "Email đã tồn tại.";
-                emailMessage.style.color = "red";
-            } else {
-                emailMessage.textContent = "";
-            }
-        }
-    };
-    xhr.send();
 }

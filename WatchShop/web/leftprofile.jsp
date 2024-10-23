@@ -41,7 +41,7 @@
     <body>
         <section id="sidebar">
             <a href="home" class="brand" style="margin-left: 60px;">
-                <span class="text">Watch Shop</span>
+                <span class="text">Book Shop</span>
             </a>
             <ul class="side-menu top">
                 <div class="user-info" style="margin-left: 10px;" >

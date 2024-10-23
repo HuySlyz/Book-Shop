@@ -119,6 +119,7 @@
                                     </c:choose>
                                 </form>
                             </div>
+                                <c:if test="${sessionScope.account.roleID == 4}">
 
                             <div class="form-group">
                                 <div class="profile-label">Số hàng đã mua:</div>
@@ -134,6 +135,7 @@
                                 </div> 
 
                             </div>
+                                                  </c:if>
                         </div>
 
                         <div style="width: 0.5px; height: 300px; background-color: #ccc;"></div>
