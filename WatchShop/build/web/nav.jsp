@@ -6,12 +6,112 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Book Shop</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
         <style>
             td, th {
                 border: 1px solid #dddddd;
                 text-align: left;
                 padding: 8px;
             }
+            .nav-container {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 8px 16px;
+                background: #ffffff;
+            }
+
+            .profile-button {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                background: #f0f2f5;
+            }
+
+            .profile-button:hover {
+                background: #e4e6e9;
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 360px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+                padding: 8px 0;
+                display: none;
+                z-index: 1000;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .dropdown-item {
+                display: flex;
+                align-items: center;
+                padding: 8px 16px;
+                text-decoration: none;
+                color: #050505;
+                gap: 12px;
+            }
+
+            .dropdown-item:hover {
+                background: #f2f2f2;
+            }
+
+            .dropdown-item i {
+                width: 20px;
+                color: #65676b;
+            }
+
+            .cart-button {
+                position: relative;
+                margin-right: 16px;
+            }
+
+            .cart-amount {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background: #e41e3f;
+                color: white;
+                border-radius: 50%;
+                width: 18px;
+                height: 18px;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .user-avatar {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #e4e6e9;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .divider {
+                height: 1px;
+                background: #dadde1;
+                margin: 8px 0;
+            }
+
         </style>
     </head>
     <body>
@@ -39,41 +139,84 @@
                         </div>
                     </form>
 
-                    <ul class="navbar-nav mb-0 ml-5" style="width: "auto">
-                        <div class="dropdown row" style="margin-left: 10px">
-
-                            <c:if test="${sessionScope.account == null}" >
-                                <li class="nav-item account">  <a href="login" class="btn btn-secondary rounded-circle">
-                                        <i class="fa fa-user"></i>
-                                    </a>
-                                    <a class="nav-link text-dark text-uppercase" href="login" style="display:inline-block">Tài khoản</a> </li>   
-                                </c:if>
-
-                            <c:if test="${sessionScope.account != null}" >
-                                <c:if test="${sessionScope.account.roleID == 1}">
-                                    <li class="nav-item account"><a class="nav-link text-dark text-uppercase" href="AdminManage.jsp" style="display:inline-block"> <i class="fa fa-user"></i>Xin chào ${account.user}</a></li> 
-                                    </c:if>
-                                    <c:if test="${sessionScope.account.roleID != 1}">
-                                    <li class="nav-item account"><a class="nav-link text-dark text-uppercase" href="profile" style="display:inline-block"> <i class="fa fa-user"></i>Xin chào ${account.user}</a></li> 
-                                    </c:if>
-
-                                <li class="nav-item account"><a class="nav-link text-dark text-uppercase" href="changepass" style="display:inline-block">Thay đổi mật khẩu</a></li> 
-                                <li class="nav-item account"><a class="nav-link text-dark text-uppercase" href="login?type=logout" style="display:inline-block">Đăng xuất</a></li> 
-                                </c:if>
-                        </div>
+                    <nav class="nav-container">
+                        <!-- Cart Button -->
                         <c:set var="size" value="${sessionScope.size}"/>
-                        <div style="margin-left: 10px">
-                            <li class="nav-item giohang">
-                                <a onclick="showCart()" class="btn btn-secondary rounded-circle">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    <c:if test="${size>0}">
-                                        <div class="cart-amount">${size}</div>
-                                    </c:if>
-                                </a>
-                                <a onclick="showCart()" class="nav-link text-dark text-uppercase" style="display:inline-block">Giỏ hàng</a>
-                            </li>
+                        <button class="profile-button cart-button" onclick="showCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <c:if test="${size > 0}">
+                                <div class="cart-amount">${size}</div>
+                            </c:if>
+                        </button>
+
+                        <!-- Profile Dropdown -->
+                        <div style="position: relative;">
+                            <c:choose>
+                                <c:when test="${sessionScope.account == null}">
+                                    <a class="nav-link text-dark text-uppercase" href="login" style="display:inline-block">Tài khoản</a> </li>   
+
+                                </c:when>
+                                <c:otherwise>
+                                    <button class="profile-button" onclick="toggleDropdown()">
+                                        <i class="fas fa-user"></i>
+                                    </button>
+                                    <div class="dropdown-menu" id="dropdownMenu">
+                                        <c:choose>
+                                            <c:when test="${sessionScope.account.roleID == 1}">
+                                                <a href="AdminManage.jsp" class="dropdown-item">
+                                                    <div class="user-avatar">
+                                                        <i class="fas fa-user"></i>
+                                                    </div>
+                                                    <span>Xin chào ${account.user}</span>
+                                                </a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="profile" class="dropdown-item">
+                                                    <div class="user-avatar">
+                                                        <i class="fas fa-user"></i>
+                                                    </div>
+                                                    <span>Xin chào ${account.user}</span>
+                                                </a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <div class="divider"></div>
+                                        <a href="changepass" class="dropdown-item">
+                                            <i class="fas fa-key"></i>
+                                            <span>Thay đổi mật khẩu</span>
+                                        </a>
+                                        <a href="login?type=logout" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            <span>Đăng xuất</span>
+                                        </a>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
-                    </ul>
+                    </nav>
+                    <script>
+                        function toggleDropdown() {
+                            document.getElementById('dropdownMenu').classList.toggle('show');
+                        }
+
+                        function showCart() {
+                            // Implement cart display logic here
+                            console.log('Show cart');
+                        }
+
+                        // Close dropdown when clicking outside
+                        window.onclick = function (event) {
+                            if (!event.target.matches('.profile-button')) {
+                                var dropdowns = document.getElementsByClassName('dropdown-menu');
+                                for (var i = 0; i < dropdowns.length; i++) {
+                                    var openDropdown = dropdowns[i];
+                                    if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                    }
+                                }
+                            }
+                        }
+                    </script>
+
                 </div>
             </div>
         </nav>
