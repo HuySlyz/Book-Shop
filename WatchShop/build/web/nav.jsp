@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Watch Shop</title>
+        <title>Book Shop</title>
         <style>
             td, th {
                 border: 1px solid #dddddd;

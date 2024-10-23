@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Watch Shop</title>
+        <title>Book Shop</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -298,12 +298,11 @@
                 });
             }
         </script>
-        <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <df-messenger
-        intent="WELCOME"
-        chat-title="WatchShop"
-        agent-id="07d6d881-7f37-481b-b15f-58830e1c2667"
-        language-code="vi"
-        ></df-messenger>
+     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  chat-title="BookShop"
+  agent-id="c9aa1087-be3e-40a7-8998-d336eb68e2c8"
+  language-code="vi"
+></df-messenger>
 </body>
 </html>
